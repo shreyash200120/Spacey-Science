@@ -259,7 +259,7 @@ export default function Home() {
   const canComplete =
     currentStep === 3 && quizState.checked && quizState.isCorrect !== null;
 
-  const hasReward = progress?.completed && !!progress?.badge;
+    const hasReward: boolean = Boolean(progress?.completed && progress?.badge);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-50">
@@ -508,7 +508,7 @@ export default function Home() {
           </section>
 
           <aside className="flex flex-col gap-4 rounded-2xl border border-slate-800/70 bg-slate-950/90 p-4 shadow-xl shadow-slate-950/80 sm:p-5">
-            <MissionChecklist currentStep={currentStep} hasReward={hasReward} />
+            <MissionChecklist currentStep={currentStep} hasReward={!!hasReward} />
             <ProgressSummary progress={progress} hasLoaded={hasLoaded} />
             <TutorPanel
               currentStep={currentStep}
