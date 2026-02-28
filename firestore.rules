@@ -1,0 +1,12 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // lessonProgress: any signed-in user can read/write (demo-friendly).
+    // For production, restrict to: student owns their docs, teacher can read all.
+    match /lessonProgress/{docId} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
+
